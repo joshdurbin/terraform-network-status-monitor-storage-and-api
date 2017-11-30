@@ -1,0 +1,13 @@
+#set($inputRoot = $input.path('$'))
+{
+    "readings": [
+        #foreach($elem in $inputRoot.Items) {
+            "timestamp": "$elem.timestamp.S",
+            "code": "$elem.code.S",
+            "logTimestamp": "$elem.logTimestamp.S",
+            "message": "$elem.message.S",
+            "priority": "$elem.priority.S"
+        }#if($foreach.hasNext),#end
+	#end
+    ]
+}

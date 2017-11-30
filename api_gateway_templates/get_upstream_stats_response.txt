@@ -1,0 +1,16 @@
+#set($inputRoot = $input.path('$'))
+{
+    "readings": [
+        #foreach($elem in $inputRoot.Items) {
+            "timestamp": "$elem.timestamp.S",
+            "channel": "$elem.channel.S",
+            "frequency": "$elem.frequency.S",
+            "powerLevel": "$elem.powerLevel.S",
+            "rangingServiceId": "$elem.rangingServiceId.N",
+            "modulation": "$elem.modulation.S",
+            "symbolRate": "$elem.symbolRate.S",
+            "rangingStatusSuccessful": "$elem.rangingStatusSuccessful.S"
+        }#if($foreach.hasNext),#end
+	#end
+    ]
+}

@@ -1,0 +1,12 @@
+#set($inputRoot = $input.path('$'))
+{
+    "readings": [
+        #foreach($elem in $inputRoot.Items) {
+            "timestamp": "$elem.timestamp.S",
+            "endpoint": "$elem.endpoint.S",
+            "success": "$elem.success.BOOL",
+            "time": "$elem.time.N"
+        }#if($foreach.hasNext),#end
+	#end
+    ]
+}
