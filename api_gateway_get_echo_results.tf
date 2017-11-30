@@ -4,6 +4,7 @@ resource "aws_api_gateway_method" "get_echo_results" {
   resource_id = "${aws_api_gateway_resource.echo.id}"
   http_method = "GET"
   authorization = "NONE"
+  api_key_required = "${var.number_of_generated_api_keys > 0 ? true : false}"
 }
 
 resource "aws_api_gateway_integration" "get_echo_results_integration_request" {

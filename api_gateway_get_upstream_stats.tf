@@ -4,6 +4,7 @@ resource "aws_api_gateway_method" "get_upstream_stats" {
   resource_id = "${aws_api_gateway_resource.upstream_statistics.id}"
   http_method = "GET"
   authorization = "NONE"
+  api_key_required = "${var.number_of_generated_api_keys > 0 ? true : false}"
 }
 
 resource "aws_api_gateway_integration" "get_upstream_stats_integration_request" {
