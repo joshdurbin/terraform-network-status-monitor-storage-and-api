@@ -14,7 +14,7 @@ resource "aws_api_gateway_integration" "get_echo_results_integration_request" {
   http_method = "${aws_api_gateway_method.get_echo_results.http_method}"
   type = "AWS"
   integration_http_method = "POST"
-  uri = "arn:aws:apigateway:us-west-2:dynamodb:action/Scan"
+  uri = "arn:aws:apigateway:${var.aws_region}:dynamodb:action/Scan"
   credentials = "${aws_iam_role.net_stat_tracker_rest_api_role.arn}"
 
   request_templates {

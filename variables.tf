@@ -26,3 +26,7 @@ variable "usage_plan_burst_limit" {
   description = "The API request burst limit, the maximum rate limit over a time ranging from one to a few seconds, depending upon whether the underlying token bucket is at its full capacity."
   default = 150
 }
+
+variable "aws_region" {
+  default = "us-west-2"
+}
