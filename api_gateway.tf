@@ -40,6 +40,12 @@ resource "aws_api_gateway_resource" "logs" {
 }
 
 resource "aws_api_gateway_deployment" "prod_deployment" {
+
+  depends_on = [
+    "aws_api_gateway_method.get_downstream_stats",
+    "aws_api_gateway_method.get_echo_results",
+    "aws_api_gateway_method.get_logs",
+    "aws_api_gateway_method.get_upstream_stats"]
   
   rest_api_id = "${aws_api_gateway_rest_api.net_stat_tracker_api.id}"
   stage_name  = "prod"
