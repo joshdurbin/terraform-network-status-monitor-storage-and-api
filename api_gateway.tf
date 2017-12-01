@@ -49,14 +49,14 @@ resource "aws_api_gateway_api_key" "key" {
 
   count = "${var.number_of_generated_api_keys}"
 
-  name = "canary_sensor_api-${aws_api_gateway_deployment.prod_deployment.stage_name}-key-${count.index}"
+  name = "net_stat_tracker_api-${aws_api_gateway_deployment.prod_deployment.stage_name}-key-${count.index}"
 }
 
 resource "aws_api_gateway_usage_plan" "net_stat_tracker_api" {
 
   count = "${var.number_of_generated_api_keys > 0 ? 1 : 0}"
 
-  name = "canary_sensor_data_api_usage_plan"
+  name = "net_stat_tracker_api_usage_plan"
 
   api_stages {
     api_id = "${aws_api_gateway_rest_api.net_stat_tracker_api.id}"
@@ -76,7 +76,7 @@ resource "aws_api_gateway_usage_plan" "net_stat_tracker_api" {
   }
 }
 
-resource "aws_api_gateway_usage_plan_key" "canary_sensor_data_api" {
+resource "aws_api_gateway_usage_plan_key" "net_stat_tracker_data_api" {
 
   count = "${var.number_of_generated_api_keys}"
 
